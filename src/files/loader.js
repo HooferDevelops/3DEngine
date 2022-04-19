@@ -1,14 +1,14 @@
-import './css/style.css'
-import * as THREE from 'three';
+import './css/style.scss'
+import {WebGLRenderer, PerspectiveCamera, Scene} from 'three'
 
-const renderer = new THREE.WebGLRenderer();
+const renderer = new WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
+const camera = new PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
 camera.position.set( 0, 0, 100 );
 camera.lookAt( 0, 0, 0 );
 
-const scene = new THREE.Scene();
+const scene = new Scene();
 
 renderer.render(scene, camera)
