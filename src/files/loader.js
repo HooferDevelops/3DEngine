@@ -1,5 +1,5 @@
 import './css/style.scss'
-import {WebGLRenderer, PerspectiveCamera, Scene} from 'three'
+/*import {WebGLRenderer, PerspectiveCamera, Scene} from 'three'
 
 const renderer = new WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
@@ -11,4 +11,9 @@ camera.lookAt( 0, 0, 0 );
 
 const scene = new Scene();
 
-renderer.render(scene, camera)
+renderer.render(scene, camera)*/
+
+import {Editor} from '../modules/engine/editor'
+
+let editor = new Editor()
+editor.init()

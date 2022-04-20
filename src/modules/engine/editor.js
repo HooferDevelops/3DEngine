@@ -38,3 +38,41 @@
             return t[k]
         }
 */
+
+import {WebGLRenderer} from 'three'
+
+class Editor {
+    constructor() {
+        this.render = new WebGLRenderer({
+            antialias: true,
+            alpha: true
+        })
+
+        document.body.appendChild(this.render.domElement);
+
+        this.updateRenderSize()
+    }
+
+    init() {
+        this.initEditor()
+        this.initEditorEvents()
+    }
+
+    initEditor() {
+        
+    }
+
+    updateRenderSize() {
+        this.render.setSize(window.innerWidth, window.innerHeight)
+    }
+
+    initEditorEvents() {
+        window.addEventListener('resize', () => {
+            this.updateRenderSize()
+        })
+    }
+}
+
+export {
+    Editor
+}
