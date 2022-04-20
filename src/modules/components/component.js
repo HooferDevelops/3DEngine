@@ -6,6 +6,12 @@ class Parameter {
         this.description = "No description provided"
         this.defaultValue = 0
         this.validationFunction = ((v) => v)
+        this._value = this.validationFunction(this.defaultValue)
+    }
+
+    get value() {
+        this._value = this.validationFunction(this.defaultValue)
+        return this._value
     }
 
     setId(id) {
@@ -33,13 +39,14 @@ class Parameter {
         return this
     }
 
-    setValidationFunction(validationFunction) {
-        this.validationFunction = validationFunction
+    setValue(value) {
+        this._value = this.validationFunction(value)
         return this
     }
 
-    get value() {
-        return this.validationFunction(this.defaultValue)
+    setValidationFunction(validationFunction) {
+        this.validationFunction = validationFunction
+        return this
     }
 }
 
@@ -61,14 +68,30 @@ class Component {
                     })
             ]
         }
+
+        this.componentDependencies = []
+        this.isRemoveable = true
     }
 
-    getDisplayInformation() {
-        return this.displayInformation
-    }
-
-    getName() {
+    get name() {
         return this.displayInformation?.name || "None"
+    }
+
+    set name(value) {
+        this.displayInformation.name = value
+    }
+
+    get description() {
+        return this.displayInformation?.description || "No description provided"
+    }
+
+    set description(value) {
+        this.displayInformation.description = value
+    }
+    
+    addParameter(parameter) {
+        this.displayInformation.parameters.push(parameter)
+        return this
     }
 
     getParameterByID(parameterID) {

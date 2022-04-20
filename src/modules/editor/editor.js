@@ -18,4 +18,23 @@
         https://github.com/GoogleChromeLabs/squoosh/tree/dev/libsquoosh
         Prompt compression for larger images, and allow user to choose compression level.
     
+    - Sandboxing Client Code
+        https://blog.risingstack.com/writing-a-javascript-framework-sandboxed-code-evaluation/
+        
+        let x = new Function("sandbox", "with (sandbox) { return console }")
+
+        let proxy = new Proxy(x, {has, get})
+        let res = x(proxy)
+
+        function has(t,k){
+            console.warn(1, k)
+            return true
+        }
+
+        function get(t,k){
+            console.warn(2, k)
+            if (k === Symbol.unscopables) return undefined
+
+            return t[k]
+        }
 */
